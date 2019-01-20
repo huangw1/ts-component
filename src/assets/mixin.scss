@@ -1,0 +1,16 @@
+@import "./variable";
+
+@mixin overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: normal;
+}
+
+@mixin focus {
+  &:focus {
+    outline: 2px auto rgba($primary-color, .6);
+    outline-offset: 2px;
+  }
+}
+

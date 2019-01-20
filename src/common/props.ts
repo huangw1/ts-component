@@ -1,0 +1,44 @@
+
+import * as React from 'react'
+import {shadowClone} from "./utils";
+
+/**
+ * base props
+ */
+export interface IProps {
+    className?: string
+}
+
+export interface IAppearanceProps {
+    type?: string,
+    size?: string
+}
+
+/**
+ * clickable action props
+ */
+export interface IActionProps extends IProps {
+    disabled?: boolean,
+    iconName?: string,
+    onClick?: (event: React.MouseEvent<HTMLElement>) => void,
+    text?: string
+}
+
+const INVALID_PROPS = [
+    'text',
+    'container',
+    'elementRef',
+    'containerRef',
+    'iconName',
+    'rightIconName',
+    'leftIconName',
+]
+
+export function removeNonHTMLProps<T extends U, U>(props: T, invalidProps = INVALID_PROPS): U {
+    return invalidProps.reduce((prev, props) => {
+        if(prev.hasOwnProperty(props)) {
+            delete prev[props]
+        }
+        return prev
+    }, shadowClone(props))
+}
