@@ -1,16 +1,20 @@
 import * as React from 'react'
 import cn from 'classnames'
-import {Modifiers as PopperModifiers, Placement} from 'popper.js'
+import {Data, ModifierFn, Modifiers as PopperModifiers, Placement} from 'popper.js'
 import {IOverlayProps, Overlay} from "../..";
 import {IProps} from "../../common/props";
 import {isUndefined, safeInvoke} from "../../common/utils";
 import {AbstractComponent} from "../../common/abstractComponent";
 import {Manager, Popper, PopperChildrenProps, Reference, ReferenceChildrenProps} from "react-popper";
 import {PREFIX} from "../../common/constants";
-import {positionToPlacement} from "./popoverUtil";
+import {getTransformOrigin, positionToPlacement} from "./popoverUtil";
 import {Position} from "../../common/position";
 
 import './popover.scss'
+
+export {
+    PopperModifiers
+}
 
 export enum PopperInteractionKind {
     CLICK = 'click',
@@ -45,7 +49,8 @@ export interface IPopoverPops extends IOverlayProps, IProps {
 }
 
 export interface IPopoverState {
-    isOpen?: boolean
+    isOpen: boolean,
+    transformOrigin: string
 }
 
 export class Popover extends AbstractComponent<IPopoverPops, IPopoverState> {
@@ -55,6 +60,7 @@ export class Popover extends AbstractComponent<IPopoverPops, IPopoverState> {
         disabled: false,
         hoverCloseDelay: 100,
         hoverOpenDelay: 100,
+        transitionDuration: 100,
         modifiers: {},
         openOnTargetFocus: true,
         position: 'auto',
@@ -88,7 +94,8 @@ export class Popover extends AbstractComponent<IPopoverPops, IPopoverState> {
         super(props, context);
 
         this.state = {
-            isOpen: this.getOpenState(props)
+            isOpen: this.getOpenState(props),
+            transformOrigin: ''
         }
     }
 
@@ -133,13 +140,32 @@ export class Popover extends AbstractComponent<IPopoverPops, IPopoverState> {
     }
 
     private get hasArrow() {
-        return this.props.minimal
+        return !this.props.minimal
     }
 
     private handleOverlayClose = (event: React.SyntheticEvent<HTMLElement>) => {
-        if(!this.targetElement || !this.targetElement.contains(event.target as HTMLElement)) {
+        if (!this.targetElement || !this.targetElement.contains(event.target as HTMLElement)) {
             this.setOpenState(false, event)
         }
+    }
+
+    private getPopperModifiers() {
+        const {modifiers} = this.props
+        return {
+            ...modifiers,
+            updatePopoverState: {
+                enabled: true,
+                fn: this.updateTransformOrigin,
+                order: 900,
+            },
+        }
+    }
+
+    private updateTransformOrigin: ModifierFn = (data: Data) => {
+        this.setState({
+            transformOrigin: getTransformOrigin(data)
+        })
+        return data
     }
 
     public render() {
@@ -160,6 +186,7 @@ export class Popover extends AbstractComponent<IPopoverPops, IPopoverState> {
                         canOutsideClickClose={this.props.interactionKind === PopperInteractionKind.CLICK}
                         className={this.props.portalClassName}
                         hasBackdrop={this.props.hasBackdrop}
+                        transitionName={`${PREFIX}-popover-transition`}
                         isOpen={this.state.isOpen && this.hasContent}
                         onClose={this.handleOverlayClose}
                         onClosed={this.props.onClosed}
@@ -171,7 +198,7 @@ export class Popover extends AbstractComponent<IPopoverPops, IPopoverState> {
                     >
                         <Popper
                             placement={positionToPlacement(this.props.position) as Placement}
-                            modifiers={this.props.modifiers}
+                            modifiers={this.getPopperModifiers()}
                             innerRef={this.refHandlers.popover}>
                             {this.renderPopper}
                         </Popper>
@@ -223,9 +250,13 @@ export class Popover extends AbstractComponent<IPopoverPops, IPopoverState> {
             [`${PREFIX}-popover-minimal`]: this.props.minimal
         }, this.props.popoverClassName)
         return (
-            <div ref={popperProps.ref} className={`${PREFIX}-popover-transition`} style={popperProps.style}>
-                <div className={popperClasses} {...contentProps}>
-                    {hasArrow && <div className={`${PREFIX}-popover-arrow`}
+            <div className={`${PREFIX}-popover-transition`}
+                 ref={popperProps.ref}
+                 data-placement={popperProps.placement}
+                 style={popperProps.style}>
+                <div className={popperClasses} {...contentProps} style={{transformOrigin: this.state.transformOrigin}}>
+                    {hasArrow && <span className={`${PREFIX}-popover-arrow`}
+                                      ref={popperProps.arrowProps.ref}
                                       data-placement={popperProps.placement}
                                       style={popperProps.arrowProps.style}/>}
                     <div className={`${PREFIX}-popover-content`}>

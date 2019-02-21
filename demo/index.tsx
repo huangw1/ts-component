@@ -11,9 +11,7 @@ import TreeDemo from "./pages/tree";
 import SliderDemo from "./pages/slider";
 import TabsDemo from "./pages/tabs";
 import ControlDemo from "./pages/control";
-import {Popover} from "../src/components/popover/popover";
-import {Position} from "../src/common/position";
-
+import PopoverDemo from "./pages/popover";
 class Demo extends React.Component {
     public render() {
         return (
@@ -29,10 +27,7 @@ class Demo extends React.Component {
                     <SliderDemo />
                     <TabsDemo />
                     <ControlDemo />
-                    <Popover position={Position.BOTTOM}>
-                        <span>help</span>
-                        <div>Popover...</div>
-                    </Popover>
+                    <PopoverDemo />
                 </Stack>
             </div>
         )

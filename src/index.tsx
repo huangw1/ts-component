@@ -8,6 +8,8 @@ import {Tabs, ITabsProps} from "./components/tabs/tabs";
 import {TabList, ITabListProps} from "./components/tabs/tabList";
 import {TabPanel, ITabPanelProps} from "./components/tabs/tabPanel";
 import {Tab, ITabProps} from "./components/tabs/tab";
+import {Popover, IPopoverPops, PopperInteractionKind, PopperModifiers} from "./components/popover/popover";
+import { Position } from './common/position'
 import { VisibilityAnimation, IVisibilityAnimationProps } from './components/visibility-animation/visibilityAnimation'
 import {Radio, Checkbox, Switch} from "./components/form/control";
 import {RadioGroup, IRadioGroupProps} from "./components/form/radioGroup";
@@ -51,6 +53,13 @@ export {
 
     VisibilityAnimation,
     IVisibilityAnimationProps,
+
+    Popover,
+    IPopoverPops,
+    PopperInteractionKind,
+    PopperModifiers,
+
+    Position,
 
     Radio,
     Checkbox,
