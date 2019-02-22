@@ -1,31 +1,31 @@
-import {Position} from "../../common/position";
+import {PositionKind} from "../../common/kinds";
 import {Data} from "popper.js";
 
-export const positionToPlacement = (position: Position | 'auto') => {
+export const positionToPlacement = (position: PositionKind | 'auto') => {
     switch (position) {
-        case Position.TOP_LEFT:
+        case PositionKind.TOP_LEFT:
             return 'top-start';
-        case Position.TOP:
+        case PositionKind.TOP:
             return 'top';
-        case Position.TOP_RIGHT:
+        case PositionKind.TOP_RIGHT:
             return 'top-end';
-        case Position.RIGHT_TOP:
+        case PositionKind.RIGHT_TOP:
             return 'right-start';
-        case Position.RIGHT:
+        case PositionKind.RIGHT:
             return 'right';
-        case Position.RIGHT_BOTTOM:
+        case PositionKind.RIGHT_BOTTOM:
             return 'right-end';
-        case Position.BOTTOM_RIGHT:
+        case PositionKind.BOTTOM_RIGHT:
             return 'bottom-end';
-        case Position.BOTTOM:
+        case PositionKind.BOTTOM:
             return 'bottom';
-        case Position.BOTTOM_LEFT:
+        case PositionKind.BOTTOM_LEFT:
             return 'bottom-start';
-        case Position.LEFT_BOTTOM:
+        case PositionKind.LEFT_BOTTOM:
             return 'left-end';
-        case Position.LEFT:
+        case PositionKind.LEFT:
             return 'left';
-        case Position.LEFT_TOP:
+        case PositionKind.LEFT_TOP:
             return 'left-start';
         case 'auto':
             return 'auto';

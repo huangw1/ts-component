@@ -1,6 +1,7 @@
 
 import * as React from 'react'
 import {shadowClone} from "./utils";
+import {SizeKind, TypeKind} from "./kinds";
 
 /**
  * base props
@@ -10,8 +11,8 @@ export interface IProps {
 }
 
 export interface IAppearanceProps {
-    type?: string,
-    size?: string
+    type?: TypeKind,
+    size?: SizeKind
 }
 
 /**

@@ -12,7 +12,7 @@ $popover-transition-pd: 12px;
     padding: 20px;
     position: relative;
     border-radius: 3px;
-    background: $white;
+    background-color: $white;
   }
   &-arrow {
     &[data-placement^="left"] {

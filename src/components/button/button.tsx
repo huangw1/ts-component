@@ -12,8 +12,8 @@ const getButtonClasses = (props: IButtonProps) => {
         classes.getIconClass(props.iconName),
         {
             [`${PREFIX}-btn-disabled`]: props.disabled,
-            [`${PREFIX}-btn-${props.type}`]: !!props.type,
-            [`${PREFIX}-btn-${props.size}`]: !!props.size
+            [`${PREFIX}-btn-${props.type}`]: props.type,
+            [`${PREFIX}-btn-${props.size}`]: props.size
         },
         props.className
     )

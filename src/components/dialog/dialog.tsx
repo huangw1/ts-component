@@ -7,6 +7,7 @@ import {Button} from "../button/button";
 import {PREFIX} from "../../common/constants";
 
 import './dialog.scss'
+import {SizeKind} from "../..";
 
 export interface IDialogProps extends IOverlayProps, IProps {
     icon?: string,
@@ -64,7 +65,7 @@ export class Dialog extends React.Component<IDialogProps> {
     public maybeRenderCloseButton() {
         if(this.props.isCloseButtonShow) {
             return (
-                <Button onClick={this.props.onClose} size="small">
+                <Button onClick={this.props.onClose} size={SizeKind.SMALL}>
                     x
                 </Button>
             )

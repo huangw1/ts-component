@@ -23,14 +23,6 @@ $btn-bg-color-disabled: $grey-8;
 $btn-hover-darken: 6%;
 $btn-focus-darken: 12%;
 
-// situation
-$btn-situations: (
-        primary:$active,
-        success:$success,
-        info:$info,
-        warning:$warning,
-        danger:$danger
-);
 $btn-situation-color: $white;
 
 @mixin btn-size($pd, $font-size) {
@@ -100,7 +92,7 @@ $btn-situation-color: $white;
   @include btn-size($btn-pd-large, $font-size-large);
 }
 
-@each $name, $color in $btn-situations {
+@each $name, $color in $situations {
   .#{$prefix}-btn-#{$name} {
     @include btn-situation($color);
   }

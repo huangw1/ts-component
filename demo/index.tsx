@@ -12,6 +12,8 @@ import SliderDemo from "./pages/slider";
 import TabsDemo from "./pages/tabs";
 import ControlDemo from "./pages/control";
 import PopoverDemo from "./pages/popover";
+import TooltipDemo from "./pages/tooltip";
+
 class Demo extends React.Component {
     public render() {
         return (
@@ -28,6 +30,7 @@ class Demo extends React.Component {
                     <TabsDemo />
                     <ControlDemo />
                     <PopoverDemo />
+                    <TooltipDemo />
                 </Stack>
             </div>
         )

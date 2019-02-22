@@ -9,8 +9,9 @@ import {TabList, ITabListProps} from "./components/tabs/tabList";
 import {TabPanel, ITabPanelProps} from "./components/tabs/tabPanel";
 import {Tab, ITabProps} from "./components/tabs/tab";
 import {Popover, IPopoverPops, PopperInteractionKind, PopperModifiers} from "./components/popover/popover";
-import { Position } from './common/position'
-import { VisibilityAnimation, IVisibilityAnimationProps } from './components/visibility-animation/visibilityAnimation'
+import {Tooltip} from "./components/tooltip/tooltip";
+import {PositionKind, TypeKind, SizeKind} from './common/kinds'
+import {VisibilityAnimation, IVisibilityAnimationProps} from './components/visibility-animation/visibilityAnimation'
 import {Radio, Checkbox, Switch} from "./components/form/control";
 import {RadioGroup, IRadioGroupProps} from "./components/form/radioGroup";
 import {CheckboxGroup, ICheckboxGroupProps} from "./components/form/checkboxGroup";
@@ -19,7 +20,7 @@ import {FocusManage, focusManage} from './common/focusManage'
 import './assets/reset.scss'
 import './assets/common.scss'
 
-if(!(focusManage as FocusManage).isActive()) {
+if (!(focusManage as FocusManage).isActive()) {
     (focusManage as FocusManage).start()
 }
 
@@ -59,7 +60,12 @@ export {
     PopperInteractionKind,
     PopperModifiers,
 
-    Position,
+    Tooltip,
+
+    PositionKind,
+    SizeKind,
+    TypeKind,
+
 
     Radio,
     Checkbox,

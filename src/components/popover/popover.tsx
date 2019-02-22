@@ -1,14 +1,14 @@
 import * as React from 'react'
 import cn from 'classnames'
 import {Data, ModifierFn, Modifiers as PopperModifiers, Placement} from 'popper.js'
-import {IOverlayProps, Overlay} from "../..";
+import {IOverlayProps, Overlay} from "../overlay/overlay";
 import {IProps} from "../../common/props";
 import {isUndefined, safeInvoke} from "../../common/utils";
 import {AbstractComponent} from "../../common/abstractComponent";
 import {Manager, Popper, PopperChildrenProps, Reference, ReferenceChildrenProps} from "react-popper";
 import {PREFIX} from "../../common/constants";
 import {getTransformOrigin, positionToPlacement} from "./popoverUtil";
-import {Position} from "../../common/position";
+import {PositionKind} from "../../common/kinds";
 
 import './popover.scss'
 
@@ -24,7 +24,7 @@ export enum PopperInteractionKind {
 
 export interface IPopoverPops extends IOverlayProps, IProps {
     content?: React.ReactNode,
-    position?: Position | 'auto',
+    position?: PositionKind | 'auto',
     wrapperTagName?: string | keyof JSX.IntrinsicElements,
     disabled?: boolean,
     isOpen?: boolean,

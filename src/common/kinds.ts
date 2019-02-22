@@ -1,4 +1,4 @@
-export enum Position {
+export enum PositionKind {
     TOP_LEFT = 'top-left',
     TOP = 'top',
     TOP_RIGHT = 'top-right',
@@ -11,4 +11,19 @@ export enum Position {
     LEFT_BOTTOM = 'left-bottom',
     LEFT = 'left',
     LEFT_TOP = 'left-top',
+}
+
+export enum SizeKind {
+    SMALL = 'small',
+    DEFAULT = 'default',
+    LARGE = 'large'
+}
+
+export enum TypeKind {
+    DEFAULT = 'default',
+    PRIMARY = 'primary',
+    SUCCESS = 'success',
+    WARNING = 'warning',
+    DANGER = 'danger',
+    INFO = 'info'
 }

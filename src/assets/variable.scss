@@ -22,6 +22,15 @@ $warning: #ff9110;
 $info: #84c2fd;
 $danger: #ff3939;
 
+// situation
+$situations: (
+        primary:$active,
+        success:$success,
+        info:$info,
+        warning:$warning,
+        danger:$danger
+);
+
 // font
 $font-color: $grey-1;
 $font-family: 'Helvetica Neue', 'Helvetica,Arial', 'Sans-serif';
