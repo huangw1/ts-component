@@ -1,3 +1,4 @@
+import {Text, ITextProps} from "./components/text/text";
 import {Button, IButtonProps} from "./components/button/button";
 import {Collapse, ICollapseProps} from "./components/collapse/collapse";
 import {Overlay, IOverlayProps} from "./components/overlay/overlay";
@@ -25,6 +26,9 @@ if (!(focusManage as FocusManage).isActive()) {
 }
 
 export {
+    Text,
+    ITextProps,
+
     Button,
     IButtonProps,
 
