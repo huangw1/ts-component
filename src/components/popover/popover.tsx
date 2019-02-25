@@ -180,6 +180,7 @@ export class Popover extends AbstractComponent<IPopoverPops, IPopoverState> {
                     </Reference>,
                     <Overlay
                         key="overlay"
+                        usePortal={this.props.usePortal}
                         autoFocus={this.props.autoFocus}
                         backdropProps={this.props.backdropProps}
                         canEscapeKeyClose={this.props.canEscapeKeyClose}

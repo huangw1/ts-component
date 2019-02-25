@@ -20,6 +20,8 @@ import {FocusManage, focusManage} from './common/focusManage'
 
 import './assets/reset.scss'
 import './assets/common.scss'
+import {Menu} from "./components/menu/menu";
+import {MenuItem} from "./components/menu/menuItem";
 
 if (!(focusManage as FocusManage).isActive()) {
     (focusManage as FocusManage).start()
@@ -79,7 +81,10 @@ export {
     IRadioGroupProps,
 
     CheckboxGroup,
-    ICheckboxGroupProps
+    ICheckboxGroupProps,
+
+    Menu,
+    MenuItem,
 };
 
 

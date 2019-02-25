@@ -22,7 +22,7 @@ export class Tooltip extends React.Component<ITooltipProps> {
             [`${PREFIX}-tooltip-${type}`]: type
         })
         return (
-            <Popover {...rest} className={tooltipClasses} popoverClassName={popoverClasses} interactionKind={PopperInteractionKind.HOVER}>
+            <Popover {...rest} className={tooltipClasses} popoverClassName={popoverClasses} interactionKind={PopperInteractionKind.HOVER_TARGET}>
                 {children}
             </Popover>
         )

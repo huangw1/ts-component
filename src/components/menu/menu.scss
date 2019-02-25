@@ -1,0 +1,57 @@
+@import "../../assets/variable";
+@import "../../assets/mixin";
+
+.#{$prefix}-menu {
+  margin: 0;
+  border-radius: 2px;
+  background: $white;
+  min-width: 180px;
+  padding: 6px;
+  list-style: none;
+  text-align: left;
+  color: $grey-1;
+  &-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 5px 7px;
+    border-radius: 2px;
+    line-height: 20px;
+    text-decoration: none;
+    color: inherit;
+    user-select: none;
+    &:active,
+    &:hover,
+    &-active {
+      background-color: $grey-8;
+    }
+    &[disabled],
+    &-disabled {
+      outline: none !important;
+      background-color: inherit !important;
+      cursor: not-allowed !important;
+    }
+  }
+  &-divider,
+  &-header {
+    display: block;
+    margin: 5px;
+    border-top: 1px solid $grey-7;
+  }
+  &-header {
+    cursor: default;
+    &-title {
+      @include overflow-ellipsis();
+      color: $grey-1;
+      font-weight: bold;
+      padding: 10px 0 4px;
+      font-size: 16px;
+      line-height: 17px;
+    }
+  }
+}
+
+.#{$prefix}-submenu {
+  .#{$prefix}-popover-content {
+    padding: 0;
+  }
+}

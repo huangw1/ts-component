@@ -13,6 +13,7 @@ import TabsDemo from "./pages/tabs";
 import ControlDemo from "./pages/control";
 import PopoverDemo from "./pages/popover";
 import TooltipDemo from "./pages/tooltip";
+import MenuDemo from "./pages/menu";
 
 class Demo extends React.Component {
     public render() {
@@ -31,6 +32,7 @@ class Demo extends React.Component {
                     <ControlDemo />
                     <PopoverDemo />
                     <TooltipDemo />
+                    <MenuDemo />
                 </Stack>
             </div>
         )

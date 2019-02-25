@@ -22,7 +22,12 @@ export interface IActionProps extends IProps {
     disabled?: boolean,
     iconName?: string,
     onClick?: (event: React.MouseEvent<HTMLElement>) => void,
-    text?: string
+    text?: React.ReactNode
+}
+
+export interface ILinkProps {
+    href?: string,
+    target?: string
 }
 
 const INVALID_PROPS = [

@@ -32,7 +32,8 @@ export interface IOverlayProps extends IOverlayLifeCircleProps, IBackdropProps, 
     transitionDuration?: number,
     portalClassName?: string,
     portalContainer?: HTMLElement,
-    onClose?: (event: React.SyntheticEvent<HTMLElement>) => void
+    onClose?: (event: React.SyntheticEvent<HTMLElement>) => void,
+    usePortal?: boolean,
 }
 
 export class Overlay extends React.Component<IOverlayProps> {
@@ -47,6 +48,7 @@ export class Overlay extends React.Component<IOverlayProps> {
         isOpen: false,
         transitionDuration: 300,
         transitionName: `${PREFIX}-overlay-transition`,
+        usePortal: true
     }
 
     private static openStack: Overlay[] = []
@@ -104,10 +106,12 @@ export class Overlay extends React.Component<IOverlayProps> {
         )
 
         return (
-            <Portal className={this.props.portalClassName} containerRef={this.portalContainerRef}
-                    container={this.props.portalContainer}>
-                {transitionGroup}
-            </Portal>
+            this.props.usePortal ?
+                <Portal className={this.props.portalClassName} containerRef={this.portalContainerRef}
+                        container={this.props.portalContainer}>
+                    {transitionGroup}
+                </Portal> :
+                transitionGroup
         )
     }
 
