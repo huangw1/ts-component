@@ -1,5 +1,5 @@
 import * as React from 'react'
-import cn from 'classnames'
+import * as cn from 'classnames'
 import { createPortal } from 'react-dom'
 import {IProps, removeNonHTMLProps} from "../../common/props";
 import {safeInvoke} from "../../common/utils";

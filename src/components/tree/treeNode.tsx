@@ -1,5 +1,5 @@
 import * as React from 'react'
-import cn from 'classnames'
+import * as cn from 'classnames'
 import {Collapse} from "../collapse/collapse";
 import {safeInvoke} from "../../common/utils";
 import {PREFIX} from "../../common/constants";

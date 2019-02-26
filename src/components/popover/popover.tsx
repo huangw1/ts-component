@@ -1,5 +1,5 @@
 import * as React from 'react'
-import cn from 'classnames'
+import * as cn from 'classnames'
 import {Data, ModifierFn, Modifiers as PopperModifiers, Placement} from 'popper.js'
 import {IOverlayProps, Overlay} from "../overlay/overlay";
 import {IProps} from "../../common/props";

@@ -1,4 +1,4 @@
-import cn from 'classnames'
+import * as cn from 'classnames'
 import * as React from 'react'
 import {IProps} from "../../common/props";
 import {PREFIX} from "../../common/constants";

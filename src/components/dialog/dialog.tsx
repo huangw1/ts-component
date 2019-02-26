@@ -1,5 +1,5 @@
 import * as React from 'react'
-import cn from 'classnames'
+import * as cn from 'classnames'
 import {IOverlayProps, Overlay} from "../overlay/overlay";
 import {IProps} from "../../common/props";
 import * as classes from "../../common/classes";

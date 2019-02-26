@@ -1,5 +1,5 @@
 import React, { useState, useLayoutEffect, useRef } from 'react'
-import cn from 'classnames'
+import * as cn from 'classnames'
 import { animations } from './preset'
 import {IProps} from "../../common/props";
 import {PREFIX} from "../../common/constants";

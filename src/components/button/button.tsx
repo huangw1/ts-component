@@ -1,4 +1,4 @@
-import cn from 'classnames'
+import * as cn from 'classnames'
 import * as React from 'react'
 import {IActionProps, removeNonHTMLProps, IAppearanceProps} from "../../common/props";
 import * as classes from "../../common/classes";

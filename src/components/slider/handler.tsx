@@ -1,5 +1,5 @@
 import * as React from 'react'
-import cn from 'classnames'
+import * as cn from 'classnames'
 import * as keys from '../../common/keys'
 import {IProps} from "../../common/props";
 import {clamp, safeInvoke} from "../../common/utils";

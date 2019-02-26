@@ -1,6 +1,6 @@
 import * as React from 'react'
 import {findDOMNode} from 'react-dom'
-import cn from 'classnames'
+import * as cn from 'classnames'
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
 import {IProps} from "../../common/props";
 import {safeInvoke} from "../../common/utils";

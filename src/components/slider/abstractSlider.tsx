@@ -1,5 +1,5 @@
 import * as React from 'react'
-import cn from 'classnames'
+import * as cn from 'classnames'
 import {IProps} from "../../common/props";
 import {approxEqual, isFunction} from "../../common/utils";
 import {PREFIX} from "../../common/constants";

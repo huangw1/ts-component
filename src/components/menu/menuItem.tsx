@@ -1,5 +1,5 @@
 import * as React from 'react'
-import cn from 'classnames'
+import * as cn from 'classnames'
 import {IActionProps, ILinkProps} from "../../common/props";
 import {PREFIX} from "../../common/constants";
 import {IPopoverPops, Popover, PopperInteractionKind} from "../popover/popover";

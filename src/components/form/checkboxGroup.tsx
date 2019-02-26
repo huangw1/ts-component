@@ -1,5 +1,5 @@
 import * as React from 'react'
-import cn from 'classnames'
+import * as cn from 'classnames'
 import {PREFIX} from "../../common/constants";
 import {IProps} from "../../common/props";
 import {Checkbox, ICheckboxProps} from "./control";
