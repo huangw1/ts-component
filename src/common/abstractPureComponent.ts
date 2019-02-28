@@ -1,6 +1,6 @@
 import * as React from 'react'
 
-export abstract class AbstractComponent<P, S> extends React.Component<P, S> {
+export abstract class AbstractPureComponent<P, S> extends React.PureComponent<P, S> {
     private timeoutIds = []
 
     protected constructor(props: P, context?: any) {

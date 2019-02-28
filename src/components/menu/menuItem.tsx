@@ -52,7 +52,7 @@ export class MenuItem extends React.PureComponent<IMenuItemProps> {
             // @ts-ignore
             <TagName className={targetClasses} {...htmlProps}>
                 {iconName && <i>&&</i>}
-                <Text ellipsis={ellipsis}>{text}</Text>
+                <Text className={`${PREFIX}-menu-item-fill`} ellipsis={ellipsis}>{text}</Text>
                 {hasSubmenu && <i>&</i>}
             </TagName>
         )

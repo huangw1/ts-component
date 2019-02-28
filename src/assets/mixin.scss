@@ -14,3 +14,9 @@
   }
 }
 
+@mixin disabled() {
+  color: $grey-6 !important;
+  outline: none !important;
+  background-color: inherit !important;
+  cursor: not-allowed !important;
+}

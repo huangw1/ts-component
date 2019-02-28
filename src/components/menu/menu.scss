@@ -26,9 +26,10 @@
     }
     &[disabled],
     &-disabled {
-      outline: none !important;
-      background-color: inherit !important;
-      cursor: not-allowed !important;
+      @include disabled();
+    }
+    &-fill {
+      flex: 1;
     }
   }
   &-divider,

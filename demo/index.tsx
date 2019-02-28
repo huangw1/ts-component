@@ -14,6 +14,7 @@ import ControlDemo from "./pages/control";
 import PopoverDemo from "./pages/popover";
 import TooltipDemo from "./pages/tooltip";
 import MenuDemo from "./pages/menu";
+import ToasterDemo from "./pages/toaster";
 
 class Demo extends React.Component {
     public render() {
@@ -24,15 +25,16 @@ class Demo extends React.Component {
                 </Stack>
                 <Stack vertical={true}>
                     <ButtonDemo/>
-                    <CollapseDemo />
-                    <DialogDemo />
-                    <TreeDemo />
-                    <SliderDemo />
-                    <TabsDemo />
-                    <ControlDemo />
-                    <PopoverDemo />
-                    <TooltipDemo />
-                    <MenuDemo />
+                    <CollapseDemo/>
+                    <DialogDemo/>
+                    <TreeDemo/>
+                    <SliderDemo/>
+                    <TabsDemo/>
+                    <ControlDemo/>
+                    <PopoverDemo/>
+                    <TooltipDemo/>
+                    <MenuDemo/>
+                    <ToasterDemo/>
                 </Stack>
             </div>
         )

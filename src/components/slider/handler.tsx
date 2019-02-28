@@ -1,9 +1,9 @@
 import * as React from 'react'
 import * as cn from 'classnames'
-import * as keys from '../../common/keys'
 import {IProps} from "../../common/props";
 import {clamp, safeInvoke} from "../../common/utils";
 import {PREFIX} from "../../common/constants";
+import {ARROW_DOWN, ARROW_LEFT, ARROW_RIGHT, ARROW_UP} from "../../common/keys";
 
 export interface IHandlerProps extends IProps {
     disabled?: boolean
@@ -75,10 +75,10 @@ export class Handler extends React.Component<IHandlerProps, IHandlerState> {
 
     private handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
         if (!this.props.disabled) {
-            if (event.which == keys.ARROW_LEFT || event.which == keys.ARROW_UP) {
+            if (event.which == ARROW_LEFT || event.which == ARROW_UP) {
                 this.changeValue(this.props.value - this.props.stepSize)
                 event.preventDefault();
-            } else if (event.which == keys.ARROW_RIGHT || event.which == keys.ARROW_DOWN) {
+            } else if (event.which == ARROW_RIGHT || event.which == ARROW_DOWN) {
                 this.changeValue(this.props.value + this.props.stepSize)
                 event.preventDefault();
             }
@@ -86,7 +86,7 @@ export class Handler extends React.Component<IHandlerProps, IHandlerState> {
     }
 
     private handleKeyUp = (event: React.KeyboardEvent<HTMLSpanElement>) => {
-        const matchKeys = [keys.ARROW_DOWN, keys.ARROW_UP, keys.ARROW_LEFT, keys.ARROW_RIGHT]
+        const matchKeys = [ARROW_DOWN, ARROW_UP, ARROW_LEFT, ARROW_RIGHT]
         if (matchKeys.indexOf(event.which) != -1) {
             safeInvoke(this.props.onRelease, this.props.value);
         }

@@ -4,9 +4,9 @@ import * as cn from 'classnames'
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
 import {IProps} from "../../common/props";
 import {safeInvoke} from "../../common/utils";
-import * as keys from '../../common/keys'
 import {Portal} from "../portal/portal";
 import {PREFIX} from "../../common/constants";
+import {ESCAPE} from "../../common/keys";
 
 import './overlay.scss'
 
@@ -174,7 +174,7 @@ export class Overlay extends React.Component<IOverlayProps> {
 
     private handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
         const {canEscapeKeyClose, onClose} = this.props
-        if (event.which == keys.ESCAPE && canEscapeKeyClose) {
+        if (event.which == ESCAPE && canEscapeKeyClose) {
             safeInvoke(onClose, event)
             event.preventDefault()
         }
@@ -237,6 +237,9 @@ export class Overlay extends React.Component<IOverlayProps> {
             if (Overlay.openStack.length) {
                 const lastOverlay = Overlay.getLastOpened()
                 lastOverlay.focusInsideOverlay()
+                if(Overlay.openStack.every(o => !o.props.hasBackdrop)) {
+                    document.body.classList.remove(`${PREFIX}-document-overlay`)
+                }
             } else {
                 document.body.classList.remove(`${PREFIX}-document-overlay`)
             }

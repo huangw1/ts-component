@@ -29,9 +29,9 @@ export class Dialog extends React.Component<IDialogProps> {
     }
 
     public render() {
-        const {className, style, children, ...others} = this.props
+        const {className, style, children, ...rest} = this.props
         return (
-            <Overlay {...others}>
+            <Overlay {...rest} className={`${PREFIX}-overlay-dialog`}>
                 <div className={`${PREFIX}-dialog`}>
                     <div className={cn(`${PREFIX}-dialog-content`, className)} style={style}>
                         {this.maybeRenderHeader()}

@@ -17,11 +17,13 @@ import {Radio, Checkbox, Switch} from "./components/form/control";
 import {RadioGroup, IRadioGroupProps} from "./components/form/radioGroup";
 import {CheckboxGroup, ICheckboxGroupProps} from "./components/form/checkboxGroup";
 import {FocusManage, focusManage} from './common/focusManage'
+import {Menu} from "./components/menu/menu";
+import {MenuItem} from "./components/menu/menuItem";
+import {Toast} from "./components/toast/toast";
+import {Toaster, IToastOption} from "./components/toast/toaster";
 
 import './assets/reset.scss'
 import './assets/common.scss'
-import {Menu} from "./components/menu/menu";
-import {MenuItem} from "./components/menu/menuItem";
 
 if (!(focusManage as FocusManage).isActive()) {
     (focusManage as FocusManage).start()
@@ -85,6 +87,10 @@ export {
 
     Menu,
     MenuItem,
+
+    Toast,
+    Toaster,
+    IToastOption
 };
 
 

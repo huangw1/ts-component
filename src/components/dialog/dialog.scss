@@ -1,6 +1,12 @@
 @import "../../assets/variable";
 @import "../../assets/mixin";
 
+.#{$prefix}-overlay-dialog {
+  .#{$prefix}-overlay-content {
+    position: fixed;
+  }
+}
+
 .#{$prefix}-dialog {
   display: flex;
   align-items: center;

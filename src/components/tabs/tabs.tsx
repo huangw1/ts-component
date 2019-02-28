@@ -6,7 +6,7 @@ import {PREFIX} from "../../common/constants";
 import {ITabProps, Tab} from "./tab";
 import {safeInvoke, uuid} from "../../common/utils";
 import {ITabListProps} from "./tabList";
-import * as keys from "../../common/keys";
+import {ENTER, SPACE} from "../../common/keys";
 
 import './tabs.scss'
 
@@ -59,7 +59,7 @@ export class Tabs extends React.Component<ITabsProps, ITabsState> {
     private handleKeyDown = (event: React.KeyboardEvent) => {
         const target = (event.target as HTMLElement).closest(`.${PREFIX}-tab`) as HTMLElement
         if(target) {
-            if(event.which == keys.ENTER || event.which == keys.SPACE) {
+            if(event.which == ENTER || event.which == SPACE) {
                 const tab = this.getInstanceFromTarget(target)
                 if(tab) {
                     tab.handleTabClick()
