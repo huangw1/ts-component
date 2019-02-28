@@ -15,6 +15,8 @@ import PopoverDemo from "./pages/popover";
 import TooltipDemo from "./pages/tooltip";
 import MenuDemo from "./pages/menu";
 import ToasterDemo from "./pages/toaster";
+import {Icon} from "../src/components/icon/icon";
+import {SizeKind} from "../src";
 
 class Demo extends React.Component {
     public render() {
@@ -35,6 +37,9 @@ class Demo extends React.Component {
                     <TooltipDemo/>
                     <MenuDemo/>
                     <ToasterDemo/>
+                    <Icon name='check' />
+                    <Icon name='close' />
+                    <Icon name='warn' />
                 </Stack>
             </div>
         )
