@@ -36,11 +36,11 @@ export class Text extends React.PureComponent<ITextProps, ITextState> {
         }
     }
 
-    componentDidUpdate() {
+    public componentDidUpdate() {
         this.updateState()
     }
 
-    componentDidMount() {
+    public componentDidMount() {
         this.updateState()
     }
 

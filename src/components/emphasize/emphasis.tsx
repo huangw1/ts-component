@@ -6,7 +6,7 @@ import {PREFIX} from "../../common/constants";
 
 import './preset.scss'
 
-export interface IVisibilityAnimationProps extends IProps {
+export interface IEmphasisProps extends IProps {
     children?: React.ReactNode,
     duration?: number,
     animationIn?: string,
@@ -20,7 +20,7 @@ export enum Animation {
     OUT
 }
 
-export const VisibilityAnimation = (props: IVisibilityAnimationProps) => {
+export const Emphasis = (props: IEmphasisProps) => {
     const {children, duration, animationIn, animationOut, style, className} = props
     const [animation, setAnimation] = useState(Animation.NONE)
     const [displayContent, setDisplayContent] = useState(children)
@@ -48,7 +48,7 @@ export const VisibilityAnimation = (props: IVisibilityAnimationProps) => {
         ...style
     }
 
-    const classes = cn(`${PREFIX}-visibility-animation`, className)
+    const classes = cn(`${PREFIX}-emphasis`, className)
 
     switch (animation) {
         case Animation.IN:
@@ -62,6 +62,6 @@ export const VisibilityAnimation = (props: IVisibilityAnimationProps) => {
     return <span style={styles} className={classes}>{displayContent}</span>
 }
 
-VisibilityAnimation.defaultProps = { duration: 200 }
+Emphasis.defaultProps = { duration: 200 }
 
-VisibilityAnimation.displayName = 'Ts:VisibilityAnimation'
+Emphasis.displayName = 'Ts:Emphasis'

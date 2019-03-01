@@ -7,6 +7,7 @@ import {Text} from "../text/text";
 import {isUndefined} from "../../common/utils";
 import {PositionKind} from "../../common/kinds";
 import {Menu} from "./menu";
+import {Icon} from "../..";
 
 export interface IMenuItemProps extends IActionProps, ILinkProps {
     text: React.ReactNode,
@@ -51,9 +52,9 @@ export class MenuItem extends React.PureComponent<IMenuItemProps> {
         const target = (
             // @ts-ignore
             <TagName className={targetClasses} {...htmlProps}>
-                {iconName && <i>&&</i>}
+                {iconName && <Icon name={iconName}/>}
                 <Text className={`${PREFIX}-menu-item-fill`} ellipsis={ellipsis}>{text}</Text>
-                {hasSubmenu && <i>&</i>}
+                {hasSubmenu && <Icon name="arrow-right"/>}
             </TagName>
         )
         return (

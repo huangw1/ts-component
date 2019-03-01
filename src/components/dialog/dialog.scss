@@ -43,8 +43,12 @@
     padding-right: 5px;
     padding-left: 20px;
 
-    &-icon {
-      flex: 0 0 auto;
+    .#{$prefix}-icon {
+      padding-right: 5px;
+    }
+
+    .#{$prefix}-icon-close {
+      padding: 5px 10px;
     }
 
     &-title {

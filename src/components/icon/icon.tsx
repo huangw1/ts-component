@@ -1,14 +1,14 @@
 import * as cn from 'classnames'
 import * as React from 'react'
 import {IconModel, icons} from './icons'
-import {IAppearanceProps, IProps} from "../../common/props";
+import {IAppearanceProps, IProps, IActionProps} from "../../common/props";
 import {PREFIX} from "../../common/constants";
 import {SizeKind} from "../../common/kinds";
-import {isUndefined} from "../../common/utils";
+import {isUndefined, safeInvoke} from "../../common/utils";
 
 import './icon.scss'
 
-export interface IIconProps extends IProps, IAppearanceProps {
+export interface IIconProps extends IProps, IAppearanceProps, IActionProps {
     name?: string,
     tagName?: keyof JSX.IntrinsicElements,
     title?: string,
@@ -23,20 +23,20 @@ export class Icon extends React.Component<IIconProps> {
     public static defaultProps = {
         fill: 'currentColor',
         tagName: 'span',
-        width: 20,
-        height: 20,
+        width: 16,
+        height: 16,
     }
 
     public render() {
-        const {tagName: TagName, name, title, size, className, fill, type} = this.props
-        const {width, height} = this.getRectangular()
+        const {tagName: TagName, name, title, className, fill, type, ...rest} = this.props
+        const {width, height} = this.getIconBounds()
         const iconClasses = cn(`${PREFIX}-icon`, `${PREFIX}-icon-${name}`, {
             [`${PREFIX}-icon-${type}`]: type
         }, className)
         const path = icons[name] as IconModel
         return (
             // @ts-ignore
-            <TagName className={iconClasses} title={title ? title : undefined}>
+            <TagName {...rest} onClick={this.handleClick} className={iconClasses} title={title ? title : undefined}>
                 <svg fill={fill}
                      width={width}
                      height={height}
@@ -49,15 +49,19 @@ export class Icon extends React.Component<IIconProps> {
         )
     }
 
-    private getRectangular() {
+    private handleClick = (event: React.MouseEvent<HTMLElement>) => {
+        safeInvoke(this.props.onClick, event)
+    }
+
+    private getIconBounds() {
         let { width, height, size } = this.props
         if(!isUndefined(size)) {
             switch (size) {
                 case SizeKind.SMALL:
-                    width = height = 16
+                    width = height = 14
                     break
                 case SizeKind.LARGE:
-                    width = height = 24
+                    width = height = 18
                     break
             }
         }

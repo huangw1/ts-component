@@ -1,5 +1,11 @@
 const webpack = require('webpack');
 const path = require('path');
+const isDev = process.env.NODE_ENV !== 'production';
+
+const plugins = [];
+if(isDev) {
+    plugins.push(new webpack.HotModuleReplacementPlugin())
+}
 
 module.exports = {
     entry : './demo/index.tsx',
@@ -42,7 +48,7 @@ module.exports = {
     },
 
     plugins: [
-        new webpack.HotModuleReplacementPlugin()
+        ...plugins
     ],
 
     // externals: {

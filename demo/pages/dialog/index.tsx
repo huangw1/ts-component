@@ -20,7 +20,7 @@ export default class DialogDemo extends React.Component {
                     <Card>
                         <p style={{'cursor': 'pointer'}} onClick={this.open}>{this.state.isOpen ? 'CLOSE' : 'OPEN'}</p>
                     </Card>
-                    <Dialog isOpen={this.state.isOpen} onClose={this.open} title={'温馨提示'}>
+                    <Dialog isOpen={this.state.isOpen} onClose={this.open} title={'温馨提示'} iconName="warn">
                         <Stack vertical={true}>
                             <p>IDE and Plugin Updates: IntelliJ IDEA is ready to update.</p>
                             <p>IDE and Plugin Updates: IntelliJ IDEA is ready to update.</p>

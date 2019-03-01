@@ -12,12 +12,11 @@
   color: $grey-1;
   &-item {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
     padding: 5px 7px;
+    font-size: 14px;
     border-radius: 2px;
     line-height: 20px;
-    text-decoration: none;
-    color: inherit;
     user-select: none;
     &:active,
     &:hover,
@@ -30,6 +29,12 @@
     }
     &-fill {
       flex: 1;
+    }
+    .#{$prefix}-icon {
+      margin-right: 5px;
+      &:last-child {
+        margin-right: 0;
+      }
     }
   }
   &-divider,

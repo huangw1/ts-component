@@ -2,17 +2,14 @@ import * as React from 'react'
 import * as cn from 'classnames'
 import {IOverlayProps, Overlay} from "../overlay/overlay";
 import {IProps} from "../../common/props";
-import * as classes from "../../common/classes";
-import {Button} from "../button/button";
 import {PREFIX} from "../../common/constants";
+import {Icon} from "../icon/icon";
 
 import './dialog.scss'
-import {SizeKind} from "../..";
 
 export interface IDialogProps extends IOverlayProps, IProps {
-    icon?: string,
+    iconName?: string,
     isCloseButtonShow?: boolean,
-    style?: React.CSSProperties,
     title?: React.ReactNode,
 }
 
@@ -25,15 +22,16 @@ export class Dialog extends React.Component<IDialogProps> {
     public static defaultProps = {
         hasBackdrop: true,
         canOutsideClickClose: true,
-        isOpen: false
+        isOpen: false,
+        isCloseButtonShow: true
     }
 
     public render() {
-        const {className, style, children, ...rest} = this.props
+        const {className, children, ...rest} = this.props
         return (
             <Overlay {...rest} className={`${PREFIX}-overlay-dialog`}>
                 <div className={`${PREFIX}-dialog`}>
-                    <div className={cn(`${PREFIX}-dialog-content`, className)} style={style}>
+                    <div className={cn(`${PREFIX}-dialog-content`, className)}>
                         {this.maybeRenderHeader()}
                         {children}
                     </div>
@@ -56,19 +54,15 @@ export class Dialog extends React.Component<IDialogProps> {
     }
 
     public maybeRenderIcon() {
-        if(this.props.icon) {
-            return <span className={cn('ts-icon', classes.getIconClass(this.props.icon))}/>
+        if(this.props.iconName) {
+            return <Icon name={this.props.iconName}/>
         }
         return null
     }
 
     public maybeRenderCloseButton() {
         if(this.props.isCloseButtonShow) {
-            return (
-                <Button onClick={this.props.onClose} size={SizeKind.SMALL}>
-                    x
-                </Button>
-            )
+            return <Icon name="close" onClick={this.props.onClose}/>
         }
         return null
     }

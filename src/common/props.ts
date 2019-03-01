@@ -31,10 +31,7 @@ export interface ILinkProps {
 }
 
 const INVALID_PROPS = [
-    'text',
-    'container',
-    'elementRef',
-    'containerRef',
+    'children',
     'iconName',
     'rightIconName',
     'leftIconName',

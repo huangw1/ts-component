@@ -15,13 +15,14 @@ export default class MenuDemo extends React.Component {
                     <Card>
                         <Stack>
                             <Menu className="menu-custom">
-                                <MenuItem text="选项1" />
+                                <MenuItem text="无序" />
+                                <MenuItem text="有序" />
                                 <MenuDivider title="组1" />
                                 <MenuItem text="剪切" />
                                 <MenuItem text="复制" />
                                 <MenuItem text="黏贴" disabled={true} />
                                 <MenuDivider title="组2" />
-                                <MenuItem text="对齐选项1">
+                                <MenuItem iconName="warn" text="对齐选项1">
                                     <MenuItem text="左对齐" />
                                     <MenuItem text="右对齐" />
                                     <MenuItem text="居中" />

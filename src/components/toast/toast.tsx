@@ -4,6 +4,7 @@ import {IAppearanceProps, IProps} from "../../common/props";
 import {PREFIX} from "../../common/constants";
 import {AbstractPureComponent} from "../../common/abstractPureComponent";
 import {safeInvoke} from "../../common/utils";
+import {Icon} from "../..";
 
 export interface IToastProps extends IProps, IAppearanceProps {
     iconName?: string,
@@ -44,9 +45,9 @@ export class Toast extends AbstractPureComponent<IToastProps, {}> {
             <div onMouseEnter={this.clearTimeouts}
                  onMouseLeave={this.startTimeout}
                  className={toastClasses}>
-                {iconName && <i>i</i>}
+                {iconName && <Icon name={iconName}/>}
                 <span className={`${PREFIX}-toast-message`}>{message}</span>
-                {showDismissButton && <i onClick={this.handleDismiss}>x</i>}
+                {showDismissButton && <Icon name="close" onClick={this.handleDismiss}/>}
             </div>
         )
     }

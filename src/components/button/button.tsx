@@ -1,33 +1,12 @@
 import * as cn from 'classnames'
 import * as React from 'react'
-import {IActionProps, removeNonHTMLProps, IAppearanceProps} from "../../common/props";
-import * as classes from "../../common/classes";
+import {IActionProps, IAppearanceProps} from "../../common/props";
+import {Icon} from "../icon/icon";
 import {PREFIX} from "../../common/constants";
 
 import './button.scss'
 
-const getButtonClasses = (props: IButtonProps) => {
-    return cn(
-        `${PREFIX}-btn`,
-        classes.getIconClass(props.iconName),
-        {
-            [`${PREFIX}-btn-disabled`]: props.disabled,
-            [`${PREFIX}-btn-${props.type}`]: props.type,
-            [`${PREFIX}-btn-${props.size}`]: props.size
-        },
-        props.className
-    )
-}
-
-const maybeRenderIcon: (iconName: string) => React.ReactNode = (iconName: string) => {
-    if (iconName == null) {
-        return ''
-    }
-    return <span className={cn(`${PREFIX}-icon`, classes.getIconClass(iconName))}/>
-}
-
 export interface IButtonProps extends IActionProps, IAppearanceProps {
-    elementRef?: (ref: HTMLElement) => any,
     rightIconName?: string,
     leftIconName?: string,
 }
@@ -39,17 +18,26 @@ export class Button extends React.Component<IButtonProps, {}> {
     public static readonly displayName = 'Ts:Button'
 
     public render() {
+        const {text, children, rightIconName, leftIconName, disabled, type, size, className, ...rest} = this.props
+        const buttonClasses = cn(
+            `${PREFIX}-btn`,
+            {
+                [`${PREFIX}-btn-disabled`]: disabled,
+                [`${PREFIX}-btn-${type}`]: type,
+                [`${PREFIX}-btn-${size}`]: size
+            },
+            className
+        )
         return (
             <button
-                {...removeNonHTMLProps(this.props)}
-                className={getButtonClasses(this.props)}
-                ref={this.props.elementRef}
+                {...rest}
+                className={buttonClasses}
                 type="button"
             >
-                {maybeRenderIcon(this.props.leftIconName)}
-                {this.props.text}
-                {this.props.children}
-                {maybeRenderIcon(this.props.rightIconName)}
+                {leftIconName && <Icon name={leftIconName}/>}
+                {text}
+                {children}
+                {rightIconName && <Icon name={rightIconName}/>}
             </button>
         )
     }
