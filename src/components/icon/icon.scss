@@ -1,0 +1,9 @@
+@import "../../assets/variable";
+
+.#{$prefix}-icon {
+  @each $name, $color in $situations {
+    &-#{$name} {
+      color: $color;
+    }
+  }
+}

@@ -3,8 +3,10 @@ import * as React from 'react'
 import {IconModel, icons} from './icons'
 import {IAppearanceProps, IProps} from "../../common/props";
 import {PREFIX} from "../../common/constants";
-import {SizeKind} from "../..";
+import {SizeKind} from "../../common/kinds";
 import {isUndefined} from "../../common/utils";
+
+import './icon.scss'
 
 export interface IIconProps extends IProps, IAppearanceProps {
     name?: string,
@@ -26,10 +28,10 @@ export class Icon extends React.Component<IIconProps> {
     }
 
     public render() {
-        const {tagName: TagName, name, title, size, className, fill} = this.props
+        const {tagName: TagName, name, title, size, className, fill, type} = this.props
         const {width, height} = this.getRectangular()
         const iconClasses = cn(`${PREFIX}-icon`, `${PREFIX}-icon-${name}`, {
-            [`${PREFIX}-icon-${size}`]: size
+            [`${PREFIX}-icon-${type}`]: type
         }, className)
         const path = icons[name] as IconModel
         return (

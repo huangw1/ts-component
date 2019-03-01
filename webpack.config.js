@@ -3,6 +3,7 @@ const path = require('path');
 
 module.exports = {
     entry : './demo/index.tsx',
+
     output: {
         filename  : 'bundle.js',
         path      : path.resolve(__dirname + '/dist'),
@@ -30,15 +31,16 @@ module.exports = {
             {
                 test: /\.scss$/,
                 use : [{
-                    loader: "style-loader"
+                    loader: 'style-loader'
                 }, {
-                    loader: "css-loader"
+                    loader: 'css-loader'
                 }, {
-                    loader : "sass-loader"
+                    loader: 'sass-loader'
                 }]
             }
         ]
     },
+
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ],

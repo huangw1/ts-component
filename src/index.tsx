@@ -24,6 +24,7 @@ import {Toaster, IToastOption} from "./components/toast/toaster";
 
 import './assets/reset.scss'
 import './assets/common.scss'
+import {Icon, IIconProps} from "./components/icon/icon";
 
 if (!(focusManage as FocusManage).isActive()) {
     (focusManage as FocusManage).start()
@@ -35,6 +36,9 @@ export {
 
     Button,
     IButtonProps,
+
+    Icon,
+    IIconProps,
 
     Collapse,
     ICollapseProps,
