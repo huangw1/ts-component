@@ -21,10 +21,11 @@ import {Menu} from "./components/menu/menu";
 import {MenuItem} from "./components/menu/menuItem";
 import {Toast} from "./components/toast/toast";
 import {Toaster, IToastOption} from "./components/toast/toaster";
+import {Icon, IIconProps} from "./components/icon/icon";
+import {Pagination, IPaginationProps} from "./components/pagination/pagination";
 
 import './assets/reset.scss'
 import './assets/common.scss'
-import {Icon, IIconProps} from "./components/icon/icon";
 
 if (!(focusManage as FocusManage).isActive()) {
     (focusManage as FocusManage).start()
@@ -51,6 +52,9 @@ export {
 
     Tree,
     ITreeProps,
+
+    Pagination,
+    IPaginationProps,
 
     Slider,
     ISliderProps,

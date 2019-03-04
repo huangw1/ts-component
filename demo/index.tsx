@@ -16,6 +16,7 @@ import TooltipDemo from "./pages/tooltip";
 import MenuDemo from "./pages/menu";
 import ToasterDemo from "./pages/toaster";
 import IconDemo from "./pages/icon";
+import PaginationDemo from "./pages/pagination";
 
 class Demo extends React.Component {
     public render() {
@@ -37,6 +38,7 @@ class Demo extends React.Component {
                     <MenuDemo/>
                     <ToasterDemo/>
                     <IconDemo/>
+                    <PaginationDemo/>
                 </Stack>
             </div>
         )

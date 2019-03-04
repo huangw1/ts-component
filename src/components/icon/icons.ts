@@ -70,6 +70,18 @@ const icon_arrow_right = {
     d: `M13.71 9.29l-6-6a1.003 1.003 0 0 0-1.42 1.42l5.3 5.29-5.29 5.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71l6-6c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71z`
 }
 
+const icon_double_arrow_left = {
+    title: 'double-arrow-left',
+    viewBox: '0 0 20 20',
+    d: `M5.41 10l5.29-5.29c.19-.18.3-.43.3-.71a1.003 1.003 0 0 0-1.71-.71l-6 6c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l6 6a1.003 1.003 0 0 0 1.42-1.42L5.41 10zm6 0l5.29-5.29c.19-.18.3-.43.3-.71a1.003 1.003 0 0 0-1.71-.71l-6 6c-.18.18-.29.43-.29.71 0 .28.11.53.29.71l6 6a1.003 1.003 0 0 0 1.42-1.42L11.41 10z`
+}
+
+const icon_double_arrow_right = {
+    title: 'double-arrow-right',
+    viewBox: '0 0 20 20',
+    d: `M11 10c0-.28-.11-.53-.29-.71l-6-6a1.003 1.003 0 0 0-1.42 1.42L8.59 10 3.3 15.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71l6-6c.18-.18.29-.43.29-.71zm5.71-.71l-6-6a1.003 1.003 0 0 0-1.42 1.42l5.3 5.29-5.29 5.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71l6-6c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71z`
+}
+
 export const icons = {
     check: icon_check,
     close: icon_close,
@@ -82,4 +94,6 @@ export const icons = {
     'arrow-up': icon_arrow_up,
     'arrow-left': icon_arrow_left,
     'arrow-right': icon_arrow_right,
+    'double-arrow-left': icon_double_arrow_left,
+    'double-arrow-right': icon_double_arrow_right,
 }
