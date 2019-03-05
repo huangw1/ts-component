@@ -1,9 +1,10 @@
 import * as React from 'react'
 import * as cn from 'classnames'
 import {IProps} from "../../common/props";
-import {safeInvoke} from "../../common/utils";
+import {safeInvoke, uuid} from "../../common/utils";
 import {PREFIX} from "../../common/constants";
 import {Icon} from "../icon/icon";
+import {OrderKind} from "../../common/kinds";
 
 import './pagination.scss'
 
@@ -13,7 +14,8 @@ export interface IPaginationProps extends IProps {
     pageNeighbors?: number
     pageNum?: number,
     pageSize?: number,
-    onChange?: (page: number) => void
+    onChange?: (page: number) => void,
+    order?: OrderKind
 }
 
 const PREV = 'PREV'
@@ -26,14 +28,17 @@ export class Pagination extends React.Component<IPaginationProps> {
         disabled: false,
         pageNum: 1,
         pageSize: 20,
-        pageNeighbors: 1
+        pageNeighbors: 1,
+        order: OrderKind.LEFT
     }
 
     private gotoPage = (page) => {
         const {totalRecords, pageSize, onChange} = this.props
         const totalPages = Math.ceil(totalRecords / pageSize)
         const realPage = Math.max(0, Math.min(page, totalPages))
-        safeInvoke(onChange, realPage)
+        if (this.props.pageNum != realPage) {
+            safeInvoke(onChange, realPage)
+        }
     }
 
     private handleClick = (page, event: React.MouseEvent<HTMLLIElement>) => {
@@ -53,7 +58,7 @@ export class Pagination extends React.Component<IPaginationProps> {
         this.gotoPage(pageNum + (pageNeighbors * 2 + 1))
     }
 
-    private rangePages(from, to, step = 1) {
+    private static rangePages(from, to, step = 1) {
         const pages = []
         while (from <= to) {
             pages.push(from)
@@ -72,31 +77,35 @@ export class Pagination extends React.Component<IPaginationProps> {
             const rightBound = pageNum + pageNeighbors
             const startPage = leftBound > 2 ? leftBound : 2
             const endPage = rightBound > totalPages - 1 ? totalPages - 1 : rightBound
-            let pages = this.rangePages(startPage, endPage)
+            let pages = Pagination.rangePages(startPage, endPage)
             let addPrev = startPage > 2
             let addNext = endPage < totalPages - 1
             if (addPrev && !addNext) {
                 // ( ]
-                const addons = this.rangePages(startPage - (totalNum - 1 - pages.length), startPage - 1)
+                const addons = Pagination.rangePages(startPage - (totalNum - 1 - pages.length), startPage - 1)
                 pages = [PREV, ...addons, ...pages]
             } else if (!addPrev && addNext) {
                 // [ )
-                const addons = this.rangePages(endPage + 1, endPage + (totalNum - 1 - pages.length))
+                const addons = Pagination.rangePages(endPage + 1, endPage + (totalNum - 1 - pages.length))
                 pages = [...pages, ...addons, NEXT]
             } else if (addPrev && addNext) {
                 pages = [PREV, ...pages, NEXT]
             }
             return [1, ...pages, totalPages]
         }
-        return this.rangePages(1, totalPages)
+        return Pagination.rangePages(1, totalPages)
 
     }
 
     public render() {
+        const {order, className} = this.props
+        const paginationClasses = cn(`${PREFIX}-pagination`, {
+            [`${PREFIX}-pagination-${order}`]: order,
+        }, className)
         const pages = this.buildPages()
         return (
             <nav>
-                <ul className={cn(`${PREFIX}-pagination`, this.props.className)}>
+                <ul className={paginationClasses}>
                     {pages.map(page => this.renderPaginationItem(page))}
                 </ul>
             </nav>
@@ -104,13 +113,14 @@ export class Pagination extends React.Component<IPaginationProps> {
     }
 
     private renderPaginationItem(page) {
-        const paginationClasses = cn(`${PREFIX}-pagination-item`, {
-            [`${PREFIX}-pagination-item-disabled`]: this.props.disabled,
-            [`${PREFIX}-pagination-item-active`]: this.props.pageNum == page,
+        const {disabled, pageNum} = this.props
+        const paginationItemClasses = cn(`${PREFIX}-pagination-item`, {
+            [`${PREFIX}-pagination-item-disabled`]: disabled,
+            [`${PREFIX}-pagination-item-active`]: pageNum == page,
         })
         const handler = page == PREV ? this.gotoPrev : page == NEXT ? this.gotoNext : (event) => this.handleClick(page, event)
         return (
-            <li className={paginationClasses} onClick={handler}>
+            <li key={uuid()} className={paginationItemClasses} onClick={handler}>
                 {page == PREV && <Icon name='double-arrow-left'/>}
                 {page == NEXT && <Icon name='double-arrow-right'/>}
                 {page != PREV && page != NEXT && page}

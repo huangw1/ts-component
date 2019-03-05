@@ -1,7 +1,7 @@
 import * as React from 'react'
 import * as cn from 'classnames'
-import { createPortal } from 'react-dom'
-import {IProps, removeNonHTMLProps} from "../../common/props";
+import {createPortal} from 'react-dom'
+import {IProps} from "../../common/props";
 import {safeInvoke} from "../../common/utils";
 import {PREFIX} from "../../common/constants";
 
@@ -13,7 +13,7 @@ export interface IPortalProps extends IProps, React.HTMLProps<HTMLDivElement> {
     container?: HTMLElement
 }
 
-export class Portal extends React.Component<IPortalProps>{
+export class Portal extends React.Component<IPortalProps> {
     public static readonly displayName = 'Ts:Portal'
     private readonly targetElement: HTMLElement
 
@@ -38,12 +38,13 @@ export class Portal extends React.Component<IPortalProps>{
     }
 
     public render() {
-        const classes = cn(`${PREFIX}-portal`, this.props.className)
+        const {className, children, containerRef, ...rest} = this.props
+        const classes = cn(`${PREFIX}-portal`, className)
         return createPortal(<div
-            {...removeNonHTMLProps(this.props)}
+            {...rest}
             className={classes}
-            ref={this.props.containerRef}>
-            {this.props.children}
+            ref={containerRef}>
+            {children}
         </div>, this.targetElement)
     }
 }

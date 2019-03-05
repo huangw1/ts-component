@@ -24,9 +24,9 @@ export default class PaginationDemo extends React.Component {
             pageNum: page
         }, () => {
             this.toaster.show({
-                message: `点击了: ${page}`,
+                message: `当前页数: ${page}`,
                 showDismissButton: true,
-                type: TypeKind.INFO,
+                type: TypeKind.WARNING,
             })
         })
     }
@@ -36,13 +36,12 @@ export default class PaginationDemo extends React.Component {
             <Card title="Pagination 组件">
                 <CardSection title="示例">
                     <Card>
-                        <Stack>
+                        <Stack vertical={true}>
                             <Toaster ref={this.refHandlers.toaster} />
                             <Pagination totalRecords={this.state.totalRecords} pageNum={this.state.pageNum} onChange={this.onChange}/>
                         </Stack>
                     </Card>
                 </CardSection>
-
             </Card>
         )
     }

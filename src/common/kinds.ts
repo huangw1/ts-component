@@ -13,6 +13,12 @@ export enum PositionKind {
     LEFT_TOP = 'left-top',
 }
 
+export enum OrderKind {
+    LEFT = 'left',
+    RIGHT = 'right',
+    CENTER = 'center'
+}
+
 export enum SizeKind {
     SMALL = 'small',
     DEFAULT = 'default',
