@@ -8,6 +8,9 @@
   position: fixed;
   width: 100%;
   box-sizing: border-box;
+  &-top {
+    top: 0;
+  }
   &-right {
     align-items: flex-end;
   }

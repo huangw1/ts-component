@@ -1,41 +1,15 @@
 import * as React from 'react'
-import {Stack} from "../../components/stack/stack";
-import {Card, CardSection} from "../../components/card/card";
+import Demo from './button'
+import {CodeView} from "../../components/codeview/codeview";
 
-import {Button, SizeKind, TypeKind} from '../../../src';
+// @ts-ignore
+const code = require('!!raw-loader!./button')
 
-export default class ButtonDemo extends React.Component {
-    public static readonly displayName = 'ButtonDemo'
-
-    public render() {
-        return (
-            <Card title="按钮组件">
-                <CardSection title="按钮类型">
-                    <Card>
-                        <Stack>
-                            <Button>DEFAULT</Button>
-                            <Button type={TypeKind.PRIMARY}>PRIMARY</Button>
-                            <Button type={TypeKind.DANGER}>DANGER</Button>
-                        </Stack>
-                    </Card>
-                </CardSection>
-                <CardSection title="按钮尺寸">
-                    <Card>
-                        <Stack>
-                            <Button size={SizeKind.SMALL}>SMALL</Button>
-                            <Button type={TypeKind.PRIMARY}>PRIMARY</Button>
-                            <Button type={TypeKind.DANGER} size={SizeKind.LARGE}>LARGE</Button>
-                        </Stack>
-                    </Card>
-                </CardSection>
-                <CardSection title="Icon 按钮">
-                    <Card>
-                        <Stack>
-                            <Button rightIconName="arrow-right" type={TypeKind.PRIMARY}>ARROW-RIGHT</Button>
-                        </Stack>
-                    </Card>
-                </CardSection>
-            </Card>
-        )
-    }
+export default () => {
+    return (
+        <div>
+            <Demo/>
+            <CodeView code={code}/>
+        </div>
+    )
 }

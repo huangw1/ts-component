@@ -44,10 +44,12 @@ export class Toaster extends AbstractPureComponent<IToasterProps, IToasterState>
         position: PositionKind.TOP
     }
 
-    public static create(props: IToastProps, container = document.body) {
+    public static create(props: IToasterProps = {}, container = document.body) {
+        let toaster: Toaster
         const element = document.createElement('div')
         container.appendChild(element)
-        return ReactDom.render(<Toaster usePortal={false}/>, element)
+        ReactDom.render(<Toaster {...props} ref={ref => toaster = ref}/>, element)
+        return toaster
     }
 
     public state = {

@@ -1,30 +1,15 @@
 import * as React from 'react'
-import {Card, CardSection} from "../../components/card/card";
-import {Slider} from '../../../src';
+import Demo from './slider'
+import {CodeView} from "../../components/codeview/codeview";
 
-export default class SliderDemo extends React.Component {
-    public static readonly displayName = 'SliderDemo'
-    public state = {
-        value: 5
-    }
-    public handleSliderChange = (value) => {
-        this.setState({value})
-    }
-    public render () {
-        return (
-            <Card title="滑动块">
-                <CardSection title="示例">
-                    <Card>
-                        <Slider
-                            onChange={this.handleSliderChange}
-                            min={0}
-                            max={100}
-                            stepSize={1}
-                            labelStepSize={10}
-                            value={this.state.value}/>
-                    </Card>
-                </CardSection>
-            </Card>
-        )
-    }
+// @ts-ignore
+const code = require('!!raw-loader!./slider')
+
+export default () => {
+    return (
+        <div>
+            <Demo/>
+            <CodeView code={code}/>
+        </div>
+    )
 }
