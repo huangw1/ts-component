@@ -23,6 +23,7 @@ import {Toast} from "./components/toast/toast";
 import {Toaster, IToastOption} from "./components/toast/toaster";
 import {Icon, IIconProps} from "./components/icon/icon";
 import {Pagination, IPaginationProps} from "./components/pagination/pagination";
+import {DatePicker, IDatePickerProps} from "./components/datepicker/datepicker";
 
 import './assets/reset.scss'
 import './assets/common.scss'
@@ -55,6 +56,9 @@ export {
 
     Pagination,
     IPaginationProps,
+
+    DatePicker,
+    IDatePickerProps,
 
     Slider,
     ISliderProps,

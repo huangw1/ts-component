@@ -1,0 +1,28 @@
+@import "../../assets/variable";
+
+.#{$prefix}-date-picker {
+  display: flex;
+  &-week {
+    display: flex;
+    &-cell {
+      flex: 1;
+      padding: 7px;
+      text-align: center;
+    }
+  }
+  &-day {
+    display: flex;
+    &-cell {
+      flex: 1;
+      padding: 8px;
+      text-align: center;
+      cursor: pointer;
+    }
+    &-today {
+      color: $primary-color;
+    }
+    &-outside {
+      color: $grey-6;
+    }
+  }
+}

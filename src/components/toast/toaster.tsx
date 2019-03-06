@@ -44,7 +44,7 @@ export class Toaster extends AbstractPureComponent<IToasterProps, IToasterState>
         position: PositionKind.TOP
     }
 
-    public static create(props: IToasterProps = {}, container = document.body) {
+    public static create(props: IToasterProps = {...Toaster.defaultProps}, container = document.body) {
         let toaster: Toaster
         const element = document.createElement('div')
         container.appendChild(element)

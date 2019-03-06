@@ -27,7 +27,7 @@ export class CodeView extends React.Component<ICodeViewProps, ICodeViewState> {
         lang: 'javascript'
     }
 
-    public toaster: Toaster
+    private toaster: Toaster
 
     constructor(props: ICodeViewProps, context?: any) {
         super(props, context);
@@ -42,7 +42,7 @@ export class CodeView extends React.Component<ICodeViewProps, ICodeViewState> {
         }
     }
 
-    public handleClick = () => {
+    private handleClick = () => {
         if (isUndefined(this.props.expanded)) {
             this.setState(state => ({expanded: !state.expanded}))
         } else {
@@ -50,14 +50,18 @@ export class CodeView extends React.Component<ICodeViewProps, ICodeViewState> {
         }
     }
 
-    public handleCopy = () => {
+    private execCopy(text) {
         // remain format
         const input = document.createElement('textarea')
-        input.value = this.props.code
+        input.value = text
         document.body.appendChild(input)
         input.select()
         document.execCommand('copy')
         document.body.removeChild(input)
+    }
+
+    private handleCopy = () => {
+        this.execCopy(this.props.code)
         if(isUndefined(this.toaster)) {
             this.toaster = Toaster.create()
         }

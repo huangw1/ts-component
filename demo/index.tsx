@@ -17,6 +17,7 @@ import MenuDemo from "./pages/menu";
 import ToasterDemo from "./pages/toaster";
 import IconDemo from "./pages/icon";
 import PaginationDemo from "./pages/pagination";
+import DatePickerDemo from "./pages/datepicker";
 
 class Demo extends React.Component {
     public render() {
@@ -39,6 +40,7 @@ class Demo extends React.Component {
                     <ToasterDemo/>
                     <IconDemo/>
                     <PaginationDemo/>
+                    <DatePickerDemo/>
                 </Stack>
             </div>
         )
