@@ -28,22 +28,23 @@ export class Icon extends React.Component<IIconProps> {
     }
 
     public render() {
-        const {tagName: TagName, name, title, className, fill, type, ...rest} = this.props
+        const {tagName: TagName, name, title, className, fill, type, disabled, ...rest} = this.props
         const {width, height} = this.getIconBounds()
         const iconClasses = cn(`${PREFIX}-icon`, `${PREFIX}-icon-${name}`, {
-            [`${PREFIX}-icon-${type}`]: type
+            [`${PREFIX}-icon-${type}`]: type,
+            [`${PREFIX}-icon-disabled`]: disabled,
         }, className)
         const path = icons[name] as IconModel
         return (
             // @ts-ignore
-            <TagName {...rest} onClick={this.handleClick} className={iconClasses} title={title ? title : undefined}>
+            <TagName {...rest} onClick={this.handleClick} className={iconClasses}>
                 <svg fill={fill}
                      width={width}
                      height={height}
                      data-id={`${PREFIX}-${name}`}
                      viewBox={path.viewBox}>
-                    <title>{path.title}</title>
-                    <path d={path.d} />
+                    <title>{title ? title : path.title}</title>
+                    <path d={path.d}/>
                 </svg>
             </TagName>
         )
@@ -54,8 +55,8 @@ export class Icon extends React.Component<IIconProps> {
     }
 
     private getIconBounds() {
-        let { width, height, size } = this.props
-        if(!isUndefined(size)) {
+        let {width, height, size} = this.props
+        if (!isUndefined(size)) {
             switch (size) {
                 case SizeKind.SMALL:
                     width = height = 14

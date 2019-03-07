@@ -1,7 +1,22 @@
 @import "../../assets/variable";
+@import "../../assets/mixin";
 
 .#{$prefix}-date-picker {
   display: flex;
+  &-caption {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    .#{$prefix}-icon {
+      cursor: pointer;
+    }
+    &-body {
+      flex: 1;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+    }
+  }
   &-week {
     display: flex;
     &-cell {
@@ -23,6 +38,16 @@
     }
     &-outside {
       color: $grey-6;
+      cursor: default;
+    }
+    &-selected {
+      color: $white;
+      background: $primary-color;
+      border-radius: 100%;
+    }
+    &-disabled {
+      @include disabled();
+      pointer-events: none;
     }
   }
 }

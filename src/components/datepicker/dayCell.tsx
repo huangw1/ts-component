@@ -27,16 +27,16 @@ export class DayCell extends AbstractPureComponent<IDayProps, {}> {
         empty: false
     }
 
-    private wrapHandler = (handler: DayHandler) => {
+    private wrapHandler = (handler: DayHandler, day: Date) => {
         return (event: React.SyntheticEvent) => {
-            // persist event ref
             event.persist()
-            safeInvoke(handler, this.props.day, event)
+            safeInvoke(handler, day, event)
         }
     }
 
     public render() {
         const {
+            day,
             empty,
             onClick,
             onMouseEnter,
@@ -52,19 +52,19 @@ export class DayCell extends AbstractPureComponent<IDayProps, {}> {
         } = this.props
         const dayClasses = cn(`${PREFIX}-date-picker-day-cell`, className)
         if (empty) {
-            return <div tabIndex={-1} className={dayClasses}/>
+            return <div tabIndex={tabIndex} className={dayClasses}/>
         }
         return (
             <div tabIndex={tabIndex}
                  className={dayClasses}
-                 onMouseEnter={this.wrapHandler(onMouseEnter)}
-                 onMouseLeave={this.wrapHandler(onMouseLeave)}
-                 onMouseDown={this.wrapHandler(onMouseDown)}
-                 onMouseUp={this.wrapHandler(onMouseUp)}
-                 onKeyDown={this.wrapHandler(onKeyDown)}
-                 onKeyUp={this.wrapHandler(onKeyUp)}
-                 onFocus={this.wrapHandler(onFocus)}
-                 onClick={this.wrapHandler(onClick)}>
+                 onMouseEnter={this.wrapHandler(onMouseEnter, day)}
+                 onMouseLeave={this.wrapHandler(onMouseLeave, day)}
+                 onMouseDown={this.wrapHandler(onMouseDown, day)}
+                 onMouseUp={this.wrapHandler(onMouseUp, day)}
+                 onKeyDown={this.wrapHandler(onKeyDown, day)}
+                 onKeyUp={this.wrapHandler(onKeyUp, day)}
+                 onFocus={this.wrapHandler(onFocus, day)}
+                 onClick={this.wrapHandler(onClick, day)}>
                 {children}
             </div>
         )

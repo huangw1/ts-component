@@ -7,8 +7,12 @@ export type Modifier = {
     [key: string]: (date: Date) => boolean
 }
 
-export const getApproxTimestamp = (day: Date) => {
-    return `${day.getFullYear()}:${day.getMonth()}:${day.getDate()}`
+export const getApproxTimestamp = (date: Date) => {
+    return `${date.getFullYear()}:${date.getMonth()}:${date.getDate()}`
+}
+
+export const cloneDate = (date: Date) => {
+    return new Date(date.getTime())
 }
 
 export const getWeekArray = (date: Date, firstDayOfWeek: number): Date[][] => {
@@ -41,5 +45,14 @@ export const getWeekArray = (date: Date, firstDayOfWeek: number): Date[][] => {
         start += 1;
     }
 
+    if(start == 5) {
+        const weekExtra = []
+        const startDay = dayArray[dayArray.length - 1]
+        for(let l = 1; l <= 7; l++) {
+            weekExtra.push(dateFns.addDays(startDay, l))
+        }
+        weekArray.push(weekExtra)
+    }
+    
     return weekArray
 }
