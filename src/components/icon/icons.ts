@@ -10,6 +10,18 @@ const icon_code = {
     d: `M6 6a1.003 1.003 0 0 0-1.71-.71l-4 4C.11 9.47 0 9.72 0 10c0 .28.11.53.29.71l4 4a1.003 1.003 0 0 0 1.42-1.42L2.41 10 5.7 6.71c.19-.18.3-.43.3-.71zm6-4c-.46 0-.83.31-.95.73l-4 14c-.02.09-.05.17-.05.27 0 .55.45 1 1 1 .46 0 .83-.31.95-.73l4-14c.02-.09.05-.17.05-.27 0-.55-.45-1-1-1zm7.71 7.29l-4-4a1.003 1.003 0 0 0-1.42 1.42l3.3 3.29-3.29 3.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71l4-4c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71z`
 }
 
+const icon_minus = {
+    title: 'minus',
+    viewBox: '0 0 20 20',
+    d: `M16 9H4c-.55 0-1 .45-1 1s.45 1 1 1h12c.55 0 1-.45 1-1s-.45-1-1-1z`
+}
+
+const icon_plus = {
+    title: 'plus',
+    viewBox: '0 0 20 20',
+    d: `M16 9h-5V4c0-.55-.45-1-1-1s-1 .45-1 1v5H4c-.55 0-1 .45-1 1s.45 1 1 1h5v5c0 .55.45 1 1 1s1-.45 1-1v-5h5c.55 0 1-.45 1-1s-.45-1-1-1z`
+}
+
 const icon_eye_off = {
     title: 'eye-off',
     viewBox: '0 0 20 20',
@@ -99,6 +111,8 @@ export const icons = {
     check: icon_check,
     close: icon_close,
     warn: icon_warn,
+    'minus': icon_minus,
+    'plus': icon_plus,
     'eye-off': icon_eye_off,
     'caret-down': icon_caret_down,
     'caret-up': icon_caret_up,
@@ -110,4 +124,11 @@ export const icons = {
     'arrow-right': icon_arrow_right,
     'double-arrow-left': icon_double_arrow_left,
     'double-arrow-right': icon_double_arrow_right,
+}
+
+export const extendIcons = (key: string, desc: IconModel) => {
+    if(icons[key]) {
+        console.warn(`icon ${key} already existed, use another icon name instead. \n`)
+    }
+    icons[key] = desc
 }

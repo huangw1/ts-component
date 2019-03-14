@@ -20,8 +20,10 @@ yarn-error.log*
 # ide
 .idea
 .vscode
-
 .cache
+
+# private
+todo.md
 
 # Ignores compiled TypeScript files
 demo/**/*.js.map

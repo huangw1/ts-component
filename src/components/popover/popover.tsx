@@ -28,6 +28,7 @@ export interface IPopoverPops extends IOverlayProps, IProps {
     wrapperTagName?: string | keyof JSX.IntrinsicElements,
     disabled?: boolean,
     isOpen?: boolean,
+    defaultIsOpen?: boolean,
     modifiers?: PopperModifiers,
     onInteraction?: (nextOpenState: boolean, event: React.SyntheticEvent<HTMLElement>) => void,
     interactionKind?: PopperInteractionKind,
@@ -57,6 +58,7 @@ export class Popover extends AbstractComponent<IPopoverPops, IPopoverState> {
     public static displayName = 'Ts:Popover'
 
     public static defaultProps = {
+        defaultIsOpen: false,
         disabled: false,
         hoverCloseDelay: 100,
         hoverOpenDelay: 100,
@@ -102,7 +104,7 @@ export class Popover extends AbstractComponent<IPopoverPops, IPopoverState> {
     componentWillReceiveProps(nextProps: IPopoverPops) {
         const isOpen = this.getOpenState(nextProps)
         if (!isUndefined(nextProps.isOpen) && isOpen != this.state.isOpen) {
-            this.setOpenState(isOpen)
+            this.setState({isOpen})
         }
     }
 
@@ -111,7 +113,7 @@ export class Popover extends AbstractComponent<IPopoverPops, IPopoverState> {
             return false
         }
         if (isUndefined(props.isOpen)) {
-            return false
+            return this.props.defaultIsOpen
         }
         return this.props.isOpen
     }
@@ -257,9 +259,9 @@ export class Popover extends AbstractComponent<IPopoverPops, IPopoverState> {
                  style={popperProps.style}>
                 <div className={popperClasses} {...contentProps} style={{transformOrigin: this.state.transformOrigin}}>
                     {hasArrow && <span className={`${PREFIX}-popover-arrow`}
-                                      ref={popperProps.arrowProps.ref}
-                                      data-placement={popperProps.placement}
-                                      style={popperProps.arrowProps.style}/>}
+                                       ref={popperProps.arrowProps.ref}
+                                       data-placement={popperProps.placement}
+                                       style={popperProps.arrowProps.style}/>}
                     <div className={`${PREFIX}-popover-content`}>
                         {content}
                     </div>

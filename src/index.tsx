@@ -24,6 +24,7 @@ import {Toaster, IToastOption} from "./components/toast/toaster";
 import {Icon, IIconProps} from "./components/icon/icon";
 import {Pagination, IPaginationProps} from "./components/pagination/pagination";
 import {DatePicker, IDatePickerProps} from "./components/datepicker/datepicker";
+import {Table, TTableProps} from "./components/table/table";
 
 import './assets/reset.scss'
 import './assets/common.scss'
@@ -103,7 +104,10 @@ export {
 
     Toast,
     Toaster,
-    IToastOption
+    IToastOption,
+
+    Table,
+    TTableProps
 };
 
 
